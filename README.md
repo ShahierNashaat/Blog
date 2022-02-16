@@ -9,6 +9,7 @@
 - HTML & CSS
 - JavaScript
 - Ruby on Rails
+- Rspec
 - OOP
 
 
@@ -23,6 +24,7 @@ To get a local copy up and running follow these simple example steps.
 - go to the repository folder in your command prompt.
 - run `bundle install`.
 - run `npm install`
+- To run the test run `rspec` in your command prompt.
 
 ## Author
 
