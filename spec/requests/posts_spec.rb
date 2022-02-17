@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Posts', type: :request do
   describe 'GET /index' do
-    before(:example) { get user_posts_path(10) }
+    before(:example) { get '/users/10/posts' }
 
     it 'should returns http 200 success' do
       expect(response).to have_http_status(200)
@@ -18,7 +18,7 @@ RSpec.describe 'Posts', type: :request do
   end
 
   describe 'GET /show' do
-    before(:example) { get user_post_path(10, 10) }
+    before(:example) { get '/users/10/posts/10' }
 
     it 'should return correct response' do
       expect(response).to have_http_status(200)
