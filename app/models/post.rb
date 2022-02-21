@@ -13,7 +13,6 @@ class Post < ApplicationRecord
   private
 
   def update_posts_counter
-    posts_number = Post.where(author: author).count('id')
-    author.update(posts_counter: posts_number)
+    author.increment!(:posts_counter)
   end
 end

@@ -7,7 +7,6 @@ class Comment < ApplicationRecord
   private
 
   def update_comments_counter
-    comments_number = Comment.where(post: post).count('id')
-    post.update(comments_counter: comments_number)
+    post.increment!(:comments_counter)
   end
 end
