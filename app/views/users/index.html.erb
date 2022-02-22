@@ -1,2 +1,14 @@
 <h1>Here is a list of users</h1>
-
+<div class="users-container">
+    <% @users.each do |user| %>
+        <div class="user-container">
+            <div class="user-img black-border">
+                <%= image_tag("avatar.png") %>
+            </div>
+            <div class="user-overview black-border">
+                <h2><%= user.name %></h2>
+                <span>Number of posts: <%= user.posts_counter || 0 %></span>
+            </div>
+        </div>
+    <% end %>
+</div>
