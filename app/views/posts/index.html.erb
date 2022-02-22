@@ -14,7 +14,7 @@
     <% @author.posts.each do |post| %>
         <div class="posts-comments-overview">
             <div class="post-overview black-border">
-                <h3><%= post.title %></h3>
+                <a href="/users/<%= @author.id %>/posts/<%= post.id %>"><h3><%= post.title %></h3></a>
                 <p><%= post.text %></p>
                 <span>Comments: <%= post.comments_counter || 0 %>, Likes: <%= post.likes_counter || 0 %></span>
             </div>
