@@ -18,7 +18,7 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'GET /show' do
-    before(:example) { get '/users/10' }
+    before(:example) { get '/users/1' }
 
     it 'should return correct response' do
       expect(response).to have_http_status(200)
