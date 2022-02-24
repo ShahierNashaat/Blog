@@ -20,7 +20,7 @@ RSpec.describe 'Posts', type: :request do
   describe 'GET /show' do
     before(:example) { get '/users/1/posts/1' }
 
-    it 'should return correct response' do
+    it 'should returns http 200 success' do
       expect(response).to have_http_status(200)
     end
 
