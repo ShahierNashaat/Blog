@@ -1,5 +1,8 @@
 <h1>Here is a list of users</h1>
 <div class="users-container">
+    <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: name %>
+    <% end -%>
     <% @users.each do |user| %>
         <a href="/users/<%= user.id%>" class="user-container">
             <div class="user-img black-border">
