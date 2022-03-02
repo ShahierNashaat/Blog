@@ -78,6 +78,11 @@
   position: relative;
 }
 
+h2,
+.alert {
+  text-align: center;
+}
+
 .user-container .user-overview h2 {
   margin-left: 20px;
   font-size: 30px;
