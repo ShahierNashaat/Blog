@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
         t.string :photo
         t.text :bio
         t.integer :posts_counter, null: false, default: 0
+        t.string :role, null: false, default: 'read'
         t.timestamps
       end
     end

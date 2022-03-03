@@ -9,6 +9,7 @@
         <div class="post-content">
             <%= @post.text %>
         </div>
+        <%= button_to "Delete", user_post_path, :method => :delete if can? :destroy, Post %>
     </div>
     <%= form_with url: "#{@post.id}/likes", html: {class: "add-like-container"} do |form| %>
         <%= form.submit "Like", class: "submit-btn" %>
@@ -16,11 +17,15 @@
     <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
     <% end -%>
-    <div class="comments-container black-border">
-        <% @post.comments.each do |comment| %>
-            <p><%= comment.author.name %>: <%= comment.text %></p>
-        <% end %>
-    </div>
+
+    <% if @post.comments.length > 0%>
+        <div class="comments-container black-border">
+            <% @post.comments.each do |comment| %>
+                <p><%= comment.author.name %>: <%= comment.text %></p>
+            <% end %>
+        </div>
+    <% end %>
+
     <%= form_with url: "#{@post.id}/comments", scope: :comment, html: {class: "add-comment-container"} do |form| %>
         <%= form.text_area :text, placeholder: "Type something here...", rows: 14, required: true %>
         <%= form.submit "Comment", class: "submit-btn" %>
