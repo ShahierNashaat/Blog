@@ -22,6 +22,7 @@
         <div class="comments-container black-border">
             <% @post.comments.each do |comment| %>
                 <p><%= comment.author.name %>: <%= comment.text %></p>
+                <%= button_to "Delete", user_post_comment_path, :method => :delete if can? :destroy, Comment %>
             <% end %>
         </div>
     <% end %>
