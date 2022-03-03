@@ -151,6 +151,8 @@ button {
 .post-details {
   width: calc(60% - 20px);
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-details .post-header {
@@ -220,14 +222,6 @@ textarea {
   height: 24px;
 }
 
-.add-like-container {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.add-like-container input,
 .add-comment-container input {
   font-size: 17px;
   text-align: center;
@@ -270,4 +264,21 @@ form div {
 
 .notice {
   text-align: center;
+}
+
+.comment-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-container form {
+  width: 10%;
+}
+
+.post-details .post-buttons {
+  width: 10%;
+  align-self: flex-end;
+  display: flex;
+  gap: 10px;
+  margin-right: 30px;
 }

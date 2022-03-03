@@ -9,11 +9,13 @@
         <div class="post-content">
             <%= @post.text %>
         </div>
-        <%= button_to "Delete", user_post_path, :method => :delete if can? :destroy, Post %>
+        <div class="post-buttons">
+            <%= button_to "Delete", user_post_path, :method => :delete if can? :destroy, Post %>
+            <%= form_with url: "#{@post.id}/likes", html: {class: "add-like-container"} do |form| %>
+                <%= form.submit "Like", class: "submit-btn" %>
+            <% end %>
+        </div>
     </div>
-    <%= form_with url: "#{@post.id}/likes", html: {class: "add-like-container"} do |form| %>
-        <%= form.submit "Like", class: "submit-btn" %>
-    <% end %>
     <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
     <% end -%>
@@ -21,8 +23,10 @@
     <% if @post.comments.length > 0%>
         <div class="comments-container black-border">
             <% @post.comments.each do |comment| %>
-                <p><%= comment.author.name %>: <%= comment.text %></p>
-                <%= button_to "Delete", user_post_comment_path, :method => :delete if can? :destroy, Comment %>
+                <div class="comment-container">
+                    <p><%= comment.author.name %>: <%= comment.text %></p>
+                    <%= button_to "Delete", user_post_comment_path(comment_id: comment.id,  post_id: @post.id, user_id: @post.author.id), :method => :delete if can? :destroy, Comment %>
+                </div>
             <% end %>
         </div>
     <% end %>

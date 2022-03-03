@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     else
       can :manage, Post, id: Post.where(user_id: user.id).map(&:id)
-      can :manage, Comment, Post.where(user_id: user.id).map(&:id)
+      can :manage, Comment, id: Comment.where(user_id: user.id).map(&:id)
       can :read, :all
     end
     #
