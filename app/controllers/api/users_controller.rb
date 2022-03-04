@@ -1,12 +1,17 @@
 class Api::UsersController < ApplicationController
   def login
-    @user = User.find_by(email: params[:email])
-    return unless sign_in(@user, password: params[:password])
-
-    @user.api_token = Devise.friendly_token.to_s
-    @user.save
-    respond_to do |format|
-      format.json { render json: @user.api_token.to_json, status: :ok }
+    valid = User.find_by(email: params[:email]).valid_password?(params[:password])
+    if valid
+      @user = User.find_by(email: params[:email])
+      @user.api_token = Devise.friendly_token.to_s
+      @user.save
+      respond_to do |format|
+        format.json { render json: @user.api_token, status: :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: 'Wrong email or password'.to_json, status: :ok }
+      end
     end
   end
 end
